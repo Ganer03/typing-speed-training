@@ -1,0 +1,36 @@
+.input-class {
+  opacity: 0;
+  position: absolute;
+  margin: auto;
+  width: 94%;
+  height: 70%;
+  top: 0;
+  left: 0;
+}
+
+.text-class {
+  position: relative;
+  width: 60%;
+  height: 114px;
+  overflow: hidden;
+}
+
+.unlook {
+  display: none;
+}
+
+.blurred {
+  opacity: 2%;
+}
+
+.change-class {
+  font: 18px sans-serif;
+  color: darkgray;
+  position: absolute;
+  margin: auto;
+  height: fit-content;
+  top: 0;
+  bottom: 0;
+  text-align: center;
+  width: 100%;
+}

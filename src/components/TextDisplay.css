@@ -1,0 +1,11 @@
+.text-view {
+  -webkit-line-clamp: 2; /* number of lines to show */
+  line-clamp: 2;
+  position: relative;
+}
+
+.correct + span.non-active,
+.incorrect + span.non-active,
+span.non-active:first-child {
+  border-left: 0.2rem solid gray;
+}
