@@ -1,7 +1,7 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-import { RootState } from '../store/store'
-import './TextDisplay.css'
+import { RootState } from '../../store/store'
+import './textDisplay.css'
 
 export const TextDisplay: React.FC = () => {
   const originalText = useSelector(

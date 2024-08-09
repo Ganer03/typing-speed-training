@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { setText, setUserInput } from '../../features/textSlice'
 import { RootState } from '../../store/store'
-import { TextDisplay } from '../TextDisplay'
+import { TextDisplay } from '../textDisplay/TextDisplay'
 import './inputField.css'
 export const InputField: React.FC = () => {
   const dispatch = useDispatch()
@@ -13,7 +13,7 @@ export const InputField: React.FC = () => {
 
   useEffect(() => {
     dispatch(setText())
-  }, [endTime])
+  }, [])
 
   useEffect(() => {
     let intervalId: NodeJS.Timeout | null = null
@@ -67,6 +67,7 @@ export const InputField: React.FC = () => {
         onFocus={handleFocus}
         onBlur={handleFocus}
         autoFocus
+        readOnly={endTime? true: false}
       />
     </div>
   )

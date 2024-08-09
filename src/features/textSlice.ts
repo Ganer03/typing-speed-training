@@ -6,6 +6,9 @@ export interface TextStateStats {
   totalChars: number
   correctChars: number
   incorrectChars: number
+  wpm: number,
+  accuracy: number
+  raw: number
 }
 
 export interface TextState {
@@ -58,7 +61,10 @@ const textSlice = createSlice({
           time: currentTime,
           totalChars: 0,
           correctChars: 0,
-          incorrectChars: 0
+          incorrectChars: 0,
+          wpm: 0,
+          accuracy: 0,
+          raw: 0
         })
       }
 
@@ -86,19 +92,25 @@ const textSlice = createSlice({
         let incorrect = 0
         let sumArray = 0
         let sumArrayWpm = 0
-        state.stats.map((char) => {
-          sumArray += char.totalChars
-          correct += char.correctChars
-          incorrect += char.incorrectChars
-          if (char.incorrectChars == 0) {
-            sumArrayWpm += char.totalChars
+        for (let index = 0; index < state.stats.length; index++) {
+          const char = state.stats[index];
+          
+          sumArray += char.totalChars;
+          correct += char.correctChars;
+          incorrect += char.incorrectChars;
+        
+          if (char.incorrectChars === 0) {
+            sumArrayWpm += char.totalChars;
           }
-        })
+          state.stats[index].wpm = sumArrayWpm / ((index + 1) / 12)
+          state.stats[index].accuracy = (correct / sumArray)* 100
+          state.stats[index].raw = sumArray / ((index + 1) / 12)
+        }
         state.correct = correct
         state.incorrect = incorrect
         state.allSymbols = sumArray
-        state.wpm = sumArrayWpm / (state.stats.length / 12)
-        state.accuracy = (correct / sumArray) * 100
+        state.wpm = state.stats[state.stats.length - 1].wpm
+        state.accuracy = state.stats[state.stats.length - 1].accuracy
       }
     },
     resetTest: (state) => {
