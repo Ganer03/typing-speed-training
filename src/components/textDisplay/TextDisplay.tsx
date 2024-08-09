@@ -41,5 +41,5 @@ export const TextDisplay: React.FC = () => {
     return result
   }
 
-  return <div className={'text-view'}>{getHighlightedText()}</div>
+  return <div className={'text-view break-words'}>{getHighlightedText()}</div>
 }

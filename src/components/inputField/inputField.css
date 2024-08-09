@@ -10,9 +10,6 @@
 
 .text-class {
   position: relative;
-  width: 60%;
-  height: 114px;
-  overflow: hidden;
 }
 
 .unlook {
@@ -24,7 +21,6 @@
 }
 
 .change-class {
-  font: 18px sans-serif;
   color: darkgray;
   position: absolute;
   margin: auto;
@@ -33,4 +29,70 @@
   bottom: 0;
   text-align: center;
   width: 100%;
+  z-index: 1;
+}
+
+.block-typing {
+  min-height: 95vh;
+}
+
+.keyboard {
+  position: fixed;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0.7;
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: 20px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  font-family: Arial, sans-serif;
+}
+
+.row {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 5px;
+}
+
+.key {
+  width: 40px;
+  height: 40px;
+  margin: 3px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #fff;
+  color: #fff;
+  font-size: 14px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.key.active {
+  background-color: #ffa500;
+}
+
+.key.wide {
+  width: 80px;
+}
+
+.key.extra-wide {
+  width: 160px;
+}
+
+.key.space {
+  width: 240px;
+}
+
+.key[title='Backspace'],
+.key[title='Enter'],
+.key[title='ShiftLeft'],
+.key[title='ShiftRight'],
+.key[title='CapsLock'],
+.key[title='Tab'] {
+  width: 60px;
 }

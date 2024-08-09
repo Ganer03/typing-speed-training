@@ -2,6 +2,8 @@
   -webkit-line-clamp: 2; /* number of lines to show */
   line-clamp: 2;
   position: relative;
+  text-align: center;
+  width: 100%;
 }
 
 .correct + span.non-active,
