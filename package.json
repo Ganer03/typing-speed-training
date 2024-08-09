@@ -2,8 +2,6 @@
   "name": "typing-speed-training",
   "version": "0.1.0",
   "homepage": "https://ganer03.github.io/typing-speed-training",
-  "predeploy": "npm run build",
-  "deploy": "gh-pages -d build",
   "private": true,
   "dependencies": {
     "@reduxjs/toolkit": "^2.2.7",
@@ -29,7 +27,9 @@
     "eject": "react-scripts eject",
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
-    "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc"
+    "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": []
