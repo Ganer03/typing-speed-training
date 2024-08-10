@@ -60,7 +60,11 @@ export const InputField = () => {
 
   return (
     <>
-      <div className={'items-center justify-start pt-8 md:justify-center md:pt-0 flex flex-col block-typing'}>
+      <div
+        className={
+          'items-center justify-start pt-8 md:justify-center md:pt-0 flex flex-col block-typing'
+        }
+      >
         <div className={`w-full flex flex-col pb-4`}>
           <div className={`w-full pb-0 md:pb-4 order-2 md:order-1`}>
             <FilterText />
@@ -72,7 +76,9 @@ export const InputField = () => {
             <div className={`m-auto ${isFocused ? '' : 'blurred'}`}>
               <TextDisplay />
             </div>
-            <div className={`text-large md:text-3xl change-class ${!isFocused ? '' : 'unlook'}`}>
+            <div
+              className={`text-large md:text-3xl change-class ${!isFocused ? '' : 'unlook'}`}
+            >
               Click here or press any key to focus
             </div>
             <input

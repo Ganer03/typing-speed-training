@@ -35,32 +35,34 @@ export const FilterText = () => {
 
   return (
     <div className={'pb-4 flex flex-col md:flex-row'}>
-        <div className={"order-2 md:order-1 flex flex-col md:flex-row md:basis-4/5"}>
-            <SelectCustom
-                length={lengthWords}
-                setLength={setLengthWords}
-                paramSelection={'multiple'}
-                lableInterface={labelCountWords}
-                about={'Length word'}
-            />
-            <SelectCustom
-                length={lengthText}
-                setLength={setLengthText}
-                paramSelection={'single'}
-                lableInterface={labelCountText}
-                about={'Length text'}
-            />
-            <SelectCustom
-                length={counterTime}
-                setLength={setCounterTime}
-                paramSelection={'single'}
-                lableInterface={labelCountTime}
-                about={'timer'}
-            />
-        </div>
-        <div className={"order-1 md:order-2 md:basis-1/5"}>
-            {counter.flag? 'time': 'words'}: {counter.count}
-        </div>
+      <div
+        className={'order-2 md:order-1 flex flex-col md:flex-row md:basis-4/5'}
+      >
+        <SelectCustom
+          length={lengthWords}
+          setLength={setLengthWords}
+          paramSelection={'multiple'}
+          lableInterface={labelCountWords}
+          about={'Length word'}
+        />
+        <SelectCustom
+          length={lengthText}
+          setLength={setLengthText}
+          paramSelection={'single'}
+          lableInterface={labelCountText}
+          about={'Length text'}
+        />
+        <SelectCustom
+          length={counterTime}
+          setLength={setCounterTime}
+          paramSelection={'single'}
+          lableInterface={labelCountTime}
+          about={'timer'}
+        />
+      </div>
+      <div className={'order-1 md:order-2 md:basis-1/5'}>
+        {counter.flag ? 'time' : 'words'}: {counter.count}
+      </div>
     </div>
   )
 }
