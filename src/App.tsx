@@ -7,17 +7,19 @@ import { Navbar, NavbarBrand, NextUIProvider } from '@nextui-org/react'
 function App() {
   return (
     <NextUIProvider>
-      <div className="App">
-        <Navbar height={'5vh'} className={'bg-[#282c34]'}>
-          <NavbarBrand className={'flex justify-center text-3xl'}>
-            Typing Speed Test
-          </NavbarBrand>
-        </Navbar>
-        <div className={'w-[80%]'}>
-          <InputField />
-          <Stats />
+      <main className="dark text-foreground bg-background">
+        <div className="App">
+          <Navbar height={'5vh'} className={'bg-[#282c34]'}>
+            <NavbarBrand className={'flex justify-start md:justify-center text-3xl'}>
+              Typing Speed Test
+            </NavbarBrand>
+          </Navbar>
+          <div className={'w-[80%]'}>
+            <InputField />
+            <Stats />
+          </div>
         </div>
-      </div>
+      </main>
     </NextUIProvider>
   )
 }

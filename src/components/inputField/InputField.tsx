@@ -1,25 +1,28 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { resetTest, setText, setUserInput } from '../../features/textSlice'
+import {
+  resetTest,
+  setCounter,
+  setText,
+  setUserInput
+} from '../../features/textSlice'
 import { RootState } from '../../store/store'
 import { TextDisplay } from '../textDisplay/TextDisplay'
 import './inputField.css'
 import { Button } from '@nextui-org/button'
-export const InputField: React.FC = () => {
+import { FilterText } from '../FilterText/FilterText'
+export const InputField = () => {
   const dispatch = useDispatch()
-  const userInput = useSelector((state: RootState) => state.text.userInput)
+  const { userInput, paramsText, flag, counter } = useSelector(
+    (state: RootState) => state.text
+  )
   const [isFocused, setIsFocused] = useState(false)
   const inputRef = useRef<HTMLInputElement>(null)
-  const endTime = useSelector((state: RootState) => state.text.endTime)
-
-  useEffect(() => {
-    dispatch(setText())
-  }, [])
 
   useEffect(() => {
     let intervalId: NodeJS.Timeout | null = null
 
-    if (!endTime && userInput != '' && isFocused) {
+    if (flag && userInput != '') {
       intervalId = setInterval(() => {
         dispatch(setUserInput(userInput))
       }, 1000)
@@ -30,7 +33,7 @@ export const InputField: React.FC = () => {
         clearInterval(intervalId)
       }
     }
-  }, [dispatch, userInput, endTime, isFocused])
+  }, [dispatch, isFocused, userInput])
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     dispatch(setUserInput(event.target.value))
@@ -50,36 +53,40 @@ export const InputField: React.FC = () => {
 
   const handleReset = () => {
     dispatch(resetTest())
-    dispatch(setText())
-    if (inputRef.current) {
-      inputRef.current.focus()
-    }
+    dispatch(setText(paramsText))
+    dispatch(setCounter(counter.timer))
+    handleClick()
   }
 
   return (
     <>
-      <div className={'items-center justify-center flex flex-col block-typing'}>
-        <div
-          className={`text-class w-full pb-4 ${isFocused ? '' : 'background-blurred'}`}
-          onClick={handleClick}
-        >
-          <div className={`${isFocused ? '' : 'blurred'}`}>
-            <TextDisplay />
+      <div className={'items-center justify-start pt-8 md:justify-center md:pt-0 flex flex-col block-typing'}>
+        <div className={`w-full flex flex-col pb-4`}>
+          <div className={`w-full pb-0 md:pb-4 order-2 md:order-1`}>
+            <FilterText />
           </div>
-          <div className={`change-class ${!isFocused ? '' : 'unlook'}`}>
-            Click here or press any key to focus
+          <div
+            className={`text-class mb-4 md:mb-0 order-1 md:order-2 ${isFocused ? '' : 'background-blurred'}`}
+            onClick={handleClick}
+          >
+            <div className={`m-auto ${isFocused ? '' : 'blurred'}`}>
+              <TextDisplay />
+            </div>
+            <div className={`text-large md:text-3xl change-class ${!isFocused ? '' : 'unlook'}`}>
+              Click here or press any key to focus
+            </div>
+            <input
+              ref={inputRef}
+              className={`input-class`}
+              type="text"
+              value={userInput}
+              onChange={handleChange}
+              onFocus={handleFocus}
+              onBlur={handleFocus}
+              autoFocus
+              readOnly={!isFocused ? true : false}
+            />
           </div>
-          <input
-            ref={inputRef}
-            className={`input-class`}
-            type="text"
-            value={userInput}
-            onChange={handleChange}
-            onFocus={handleFocus}
-            onBlur={handleFocus}
-            autoFocus
-            readOnly={endTime ? true : false}
-          />
         </div>
         <Button color="primary" onClick={() => handleReset()}>
           Reset

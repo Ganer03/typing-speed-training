@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux'
 import { RootState } from '../../store/store'
 import './textDisplay.css'
 
-export const TextDisplay: React.FC = () => {
+export const TextDisplay = () => {
   const originalText = useSelector(
     (state: RootState) => state.text.originalText
   )
@@ -41,5 +41,9 @@ export const TextDisplay: React.FC = () => {
     return result
   }
 
-  return <div className={'text-view break-words'}>{getHighlightedText()}</div>
+  return (
+    <div className={'text-view break-words text-medium md:text-3xl font-light'}>
+      {getHighlightedText()}
+    </div>
+  )
 }

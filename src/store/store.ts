@@ -1,5 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit'
-import textReducer, { TextState } from '../features/textSlice'
+import { TextState } from '../features/textSliceInterface'
+import textReducer from '../features/textSlice'
 
 export interface RootState {
   text: TextState
