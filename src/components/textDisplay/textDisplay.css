@@ -4,10 +4,14 @@
   position: relative;
   text-align: center;
   width: 100%;
+  font-family: 'Source Code Pro', monospace;
 }
 
-.correct + span.non-active,
-.incorrect + span.non-active,
-span.non-active:first-child {
+/* .span{
+  position: relative;
+} */
+
+.active{
+  position: relative;
   border-left: 0.2rem solid gray;
 }
