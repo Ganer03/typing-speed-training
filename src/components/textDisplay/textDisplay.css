@@ -11,7 +11,7 @@
   position: relative;
 } */
 
-.active{
+.active {
   position: relative;
   border-left: 0.2rem solid gray;
 }

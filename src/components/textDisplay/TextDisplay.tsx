@@ -28,14 +28,14 @@ export const TextDisplay = () => {
         indexOriginal++
       }
     }
-    if (indexOriginal< originalText.length){
+    if (indexOriginal < originalText.length) {
       result.push(
         <span key={indexOriginal} className="non-active">
-          <span className={"active"}></span>
+          <span className={'active'}></span>
           {originalText[indexOriginal]}
         </span>
       )
-      indexOriginal++;
+      indexOriginal++
     }
     while (indexOriginal < originalText.length) {
       result.push(
@@ -50,7 +50,10 @@ export const TextDisplay = () => {
   }
 
   return (
-    <div className={'text-view break-words text-medium md:text-3xl font-light'} style={{fontFamily: 'monospace'}}>
+    <div
+      className={'text-view break-words text-medium md:text-3xl font-light'}
+      style={{ fontFamily: 'monospace' }}
+    >
       {getHighlightedText()}
     </div>
   )
